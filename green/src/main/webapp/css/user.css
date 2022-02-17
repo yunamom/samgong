@@ -1,0 +1,26 @@
+@charset "UTF-8";
+section{
+	text-align: center;
+}
+.login{
+	display: flex;
+	justify-content: center;	
+}
+.login table{	
+	width:350px;
+	padding:20px;
+	border-top: 2px solid #333;
+}
+.login input{
+	width:100%;
+	padding:10px;
+	font-size:15px;
+}
+.button input{
+	width:350px;
+	padding:10px;
+	color: white;
+	background-color: #333;
+	border-radius: 0.5rem;
+	
+}
