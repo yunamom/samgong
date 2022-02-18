@@ -1,30 +1,26 @@
 @charset "UTF-8";
 
 .fakeimg {	
-	min-width: 200px;
+	min-width: 220px;
 	max-width: 470px;
+	min-height: 314px;
 	max-height: 640px;
+	cursor: pointer;
 	margin: 20px;
 }
-@media screen and (min-width: 600px) {
-	.movie {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.videowrapper{
-		margin: 40px;
-	}
-}
-.fakeimg{
-	cursor: pointer;
+.fakeimg:hover {
+	background-color: #fff;
+    opacity: 0.3; /* 투명도 지정*/
 }
 button{
 	margin-top: 10px;
-	padding: 0.5rem;
+	padding-right: 1.2rem;
+	padding-left: 1.2rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
 	cursor: pointer;
 	border: 0;
-	border-radius: 0.1rem;
+	border-radius: 0.2rem;
 	color: #f2f2f2;
 	background-color: #539cae;
 }
@@ -34,7 +30,7 @@ button:hover{
 .a {
     position: relative
 }
-.c {
+.c { /* 순위 rank 이미지 들어가는곳*/
     position: absolute;
     top: 0px;
     left: 0px;
@@ -49,4 +45,18 @@ button:hover{
 .left{
 	text-align: left;
 	margin-bottom: -20px;
+}
+.videowrapper{
+	margin: 1rem;
+}
+@media screen and (min-width: 650px) {
+	.movie {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.videowrapper{
+		margin: 5rem;
+		border-radius: 0.5rem;
+	}
 }
