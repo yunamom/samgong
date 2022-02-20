@@ -5,7 +5,7 @@
    String session_no = (String)session.getAttribute("session_no");
    // String 으로 변수 타입을 수정하였습니다. 변수명 중복으로 변경합니다.
   
-   String tiket = (session_no == null || session_no.equals(""))?"userLogin.jsp":"tiket.jsp";
+   String tiket = (session_no == null || session_no.equals(""))?"userLogin.jsp":"tiket_movie.jsp";
 %>
 <!DOCTYPE html>
 <html>
@@ -42,7 +42,7 @@
         <li><a href="<%=tiket%>" aria-label="subemnu">빠른예매</a></li>
       </ul>
     </li>
-    <li><a href="#" onclick="alert('준비중입니다.')">고객센터</a>
+    <li><a href="qnaBoardList.jsp">고객센터</a>
       <ul id="sub-menu">
         <li><a href="#" aria-label="subemnu">FAQ</a></li>
       </ul>

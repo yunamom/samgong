@@ -129,7 +129,9 @@ ul, li {
     margin-top: 20px;
     border-radius: 0.5rem;
 }
-
+section{
+	min-height: 700px;
+}
 section:after {
     content: "";
     display: table;
@@ -151,7 +153,7 @@ footer {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 비율인 경우 */
 	/* padding-bottom값은 4:3 비율인 경우 75%로 설정합니다 */
-	/*padding-top: 25px;*/
+	padding-top: 25px;
 	height: 0;
 }
 

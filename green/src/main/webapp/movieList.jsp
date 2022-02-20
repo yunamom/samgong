@@ -10,6 +10,7 @@
 <title>현재상영작</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/movie.css">
+<link rel="stylesheet" href="css/movieList.css">
 
 </head>
 <body>
@@ -33,6 +34,9 @@
  		<option value="">테스트</option>
  	</select>
  	</div>
+ 	
+ 	
+ 	
     <div class="movie" >
       <!-- background-image 배경으로 사진을 첨부해서 비율을 맞추도록합니다. -->	
       <%for(int i=1; i<5; i++) {%>
