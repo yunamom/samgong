@@ -3,6 +3,21 @@
 <%@page import="java.util.*"%>
 <%@page import="DBPKG.DAO"%>
 <%@page import="java.sql.*"%>
+<%@include file="certificated.jsp" %>
+<%
+String strReferer = request.getHeader("referer");
+if(strReferer == null){ 
+//비정상적인 URL 접근차단을 위해 request.getHeader("referer") 메소드를 사용하였습니다.
+%>
+	<script>
+	alert("정상적인 경로를 통해 다시 접근해 주십시오.");
+	location="index.jsp";
+	</script>
+<%
+	return;
+}
+%>
+
 <%
 	request.setCharacterEncoding("UTF-8");
 	
@@ -10,23 +25,21 @@
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
-	Object obj = session.getAttribute("u_no");
-	int u_no = (int)obj;
-	if(u_no == -1){
+	
+	if(check_no == null || check_no.equals("")){
 		%>
 		<script>
-		alert("로그인해주세요.");
-		location='login.jsp';
+		alert("로그인후 이용해주세요.");
+		location='userLogin.jsp';
 		</script>
 		<% return;
-	}
-	
+	}	
 	ArrayList<String[]> movieList = new ArrayList<String[]>();
 	
 	try{
 		//1. 연결
 		conn = DAO.getConnection();
-		String sql = "SELECT m_no, m_name, m_grade from movie";
+		String sql = "SELECT m_no, m_name, m_grade FROM movie";
 		//2. 명령문보내기
 		ps = conn.prepareStatement(sql);
 		rs = ps.executeQuery();
@@ -59,18 +72,7 @@
 <section>
 <div align="center">
 	<h2>빠른예매_영화선택</h2>
-	<table border="1">
-		<tr>
-			<td rowspan="10" align="center">영화</td>
-		<%for(int i = 0; i < movieList.size(); i++) {%>
-		<%String[] movie = movieList.get(i); %>	
-			<td align="center">
-			<a href="ticket_theater.jsp?m_no=<%=movie[0]%>&u_no=<%=u_no%>"><%=movie[1]%></a>
-			</td>
-		</tr>
-		<%} %>
-
-	</table>
+	
 </div>
 </section>
 <%@ include file="footer.jsp" %>

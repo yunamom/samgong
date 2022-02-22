@@ -23,11 +23,11 @@ if(strReferer == null){
 <link rel="stylesheet" href="css/user.css">
 
 </head>
-<body>
+<body onload="document.frm.u_id.focus()">
 <%@ include file="topmenu.jsp" %>
   <section>
+  <div class="top"><h1>Login</h1></div>
     <form name="frm" action="userLoginPro.jsp"  method="post">
-    <h2>Login</h2>
     <div class="login">
     <table>
       <tr>

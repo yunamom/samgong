@@ -16,7 +16,7 @@
 <body>
 <%@ include file="topmenu.jsp"%>
 <section>
- 	<div style="text-align:center"><h1>최신개봉작</h1></div>
+ 	<div class="top"><h1>최신개봉작</h1></div>
  	<div class="left">
  	<select name="">
  		<option>장르별</option>

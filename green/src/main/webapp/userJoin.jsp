@@ -75,8 +75,8 @@ if(session_no != null){
 <%	return;
 }	
 %>
+  <div class="top"><h1>Join Member</h1></div>
   <section>
-  <h1>Join Member</h1>
     <form name="frm" action="userJoinPro.jsp" method="post">
       <input type="hidden" name="u_no" value="<%=u_no%>" readonly> 
     
@@ -84,8 +84,8 @@ if(session_no != null){
     <table >
       <tr>
       <td>
-      <input style="width:50%" type="text" name="u_id" placeholder="아이디" required>
-      <input style="width:20%; cursor:pointer;" type="button" onclick="fn_dbCheckId()" name="dbCheckId" value="check ID">
+      <input style="width:75%" type="text" name="u_id" placeholder="아이디" required>
+      <input style="width:20%; float:right; cursor:pointer;" type="button" onclick="fn_dbCheckId()" name="dbCheckId" value="check ID">
       <input type="hidden" name="idDuplication" value="0"></td>
       <!-- 중복체크 확인을 위한 hidden 변수 -->
       </tr> 
@@ -115,7 +115,7 @@ if(session_no != null){
       </tr>
       
       <%java.util.Date date = new java.util.Date();
-        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
         String strdate = simpleDate.format(date);
       %>
       <tr>
