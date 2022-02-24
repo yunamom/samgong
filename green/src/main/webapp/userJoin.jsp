@@ -108,23 +108,22 @@ if(session_no != null){
       <td><input type="text" name="u_name" placeholder="이름" required></td>
       </tr>   
       <tr>
-	      <td>
+	      <td style="text-align:center">
 	      Male<input style="width:10%" type="radio" name="u_gender" value="M">
 	      Female<input style="width:10%" type="radio" name="u_gender" value="F">
 	      </td>
-      </tr>
-      
-      <%java.util.Date date = new java.util.Date();
+      </tr>    
+      <%
+      	java.util.Date date = new java.util.Date();
         SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
         String strdate = simpleDate.format(date);
-      %>
-      <tr>
-      <td><input type="text" name="u_regdate" value=<%= strdate%> readonly="readonly"></td>
-      </tr>
-      
+      %>  
       <tr>
       <td><input type="text" name="u_phone" placeholder="phone" required>
       </td>
+      </tr>
+      <tr>
+      <td style="text-align:center"><input type="text" name="u_regdate" value="<%= strdate%>" readonly></td>
       </tr>
     </table>
     </div>
