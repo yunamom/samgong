@@ -41,7 +41,7 @@ try{
 	  if(m_no > 0){
 		  %>
 		  <script>
-		  location = "movieList.jsp";	  
+		  location = "movieList.jsp?search=1";	  
 		  </script>		  
 		  <%
 	  }else{

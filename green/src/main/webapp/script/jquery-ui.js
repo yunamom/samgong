@@ -7377,7 +7377,7 @@ function Datepicker() {
 		dayNamesShort: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ], // For formatting
 		dayNamesMin: [ "일", "월", "화", "수", "목", "금", "토" ], // Column headings for days starting at Sunday
 		/* 요일 이름 변경하기*/ 
-		weekHeader: "Wk", // Column header for week of the year
+		weekHeader: "Wk", // Column header for week of the yeardd-MMM-yy
 		dateFormat: "yy-mm-dd", // See format options on parseDate
 		/* 데이터 타입 변경 */
 		firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...

@@ -66,7 +66,9 @@ if(id == null || pw == null || id.equals("") || pw.equals("")){
 	  e.printStackTrace(); 
   }
 if(id.equals(u_id) && pw.equals(u_pw)) {
-	session.setAttribute("session_no",u_no);   
+	session.setAttribute("session_no",u_no); 
+	session.setAttribute("session_id",u_id); 
+	
 	  /* 수정 (2022 2월 18일 yunamom) 
 	  session 으로 받은 u_no -> session_no 수정합니다. */
 	session.setMaxInactiveInterval(30*60);
@@ -92,7 +94,7 @@ if(id.equals(u_id) && pw.equals(u_pw)) {
 	    location="index.jsp";
 	  </script>
 <%
-  }else if(u_id.equals("samgong")){
+  }else if(u_id.equals("samgongpal")){
 %>
 	  <script>
 	    alert("관리자님 환영합니다.");
