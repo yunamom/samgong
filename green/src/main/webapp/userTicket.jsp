@@ -30,38 +30,22 @@ if(strReferer == null){
   	return;
   }
   
-  int Ticketing_no = Integer.parseInt(check_no);
+  
   
   Connection conn = null;
   PreparedStatement ps = null;
   ResultSet rs = null;
   
-  ArrayList<String[]> userTicket = new ArrayList<String[]>();
   
-  try{
-	  conn = DAO.getConnection();
-	 String sql = "SELECT R.r_no, M.m_name, T.t_address, R.r_count ";
-	         sql+= "FROM MOVIE M, THEATER T, RESERVATION R WHERE r.u_no = ? AND R.t_no = T.t_no AND r.m_no = M.m_no ORDER BY r_no";
+ 
+	conn = DAO.getConnection();
+	String sql = "SELECT count(*)cnt FROM reservation WHERE u_no="+check_no;
 	
-	
-	  ps = conn.prepareStatement(sql);
-	  ps.setInt(1, Ticketing_no);
-	  rs = ps.executeQuery();
-	  while(rs.next()) {
-		  String[] Ticketing = new String[4];
-		  Ticketing[0] = rs.getInt(1) + "";
-		  Ticketing[1] = rs.getString(2);
-		  Ticketing[2] = rs.getString(3);
-		  Ticketing[3] = rs.getInt(4) + "";
-		  userTicket.add(Ticketing);
-	  }
-	  conn.close();
-	  ps.close();
-	  rs.close();
-  }catch(Exception e) {
-	  e.printStackTrace();
-	  e.printStackTrace();
-  }
+	ps = conn.prepareStatement(sql); 
+	rs = ps.executeQuery();
+	rs.next();
+	int cnt = rs.getInt("cnt");
+ 
 %>
 <!DOCTYPE html>
 <html>
@@ -77,39 +61,53 @@ if(strReferer == null){
 	align-items: center;
 }
 .page > table,th,td{
-	padding: 1rem;
 	border: 1px solid #333;
 	border-collapse: collapse;
-}
-.page > th{
-	background-color: rgba(255,255,255,0.5);
 }
 </style>
 </head>
 <body>
 <%@ include file="topmenu.jsp" %>
-<div class="top"><h1>∙ 예매정보 ∙</h1></div>
   <section>
-    <%if(userTicket.size() > 0) {%>
-    <form action="userTicketingPro.jsp">
-
+    <%if(cnt > 0) {
+    	sql = " SELECT ";
+    	sql+= " T.t_address, ";
+    	sql+= " M.m_name, ";
+    	sql+= " R.r_count, ";
+    	sql+= " R.r_date, ";
+    	sql+= " R.r_no ";
+    	sql+= " FROM reservation R, ";
+    	sql+= " movie M, ";
+    	sql+= " theater T ";
+    	sql+= " WHERE R.u_no="+check_no;
+    	sql+= " AND M.m_no = R.m_no ";
+    	sql+= " AND T.t_no = R.t_no ";
+    	
+    	ps = conn.prepareStatement(sql); 
+    	rs = ps.executeQuery();
+    %>
+    <h2>예매정보</h2>
     <div class="page">
     <table>
       <tr>
-      <th>영화제목</th>
-      <th>영화관</th>
-      <th>인원</th>
-      <th></th>
+      <td>영화관</td>
+      <td>영화제목</td>
+      <td>인원</td>
+      <td>날짜</td>
       </tr>
       
-      
-      <%for(int i = 0; i < userTicket.size(); i ++) {%>
+      <%while(rs.next()){%>
         <tr>
-          <%String[] Ticketing = userTicket.get(i);%>
-          <td><%= Ticketing[1]%></td>
-          <td><%= Ticketing[2]%></td>
-          <td><%= Ticketing[3]%></td>
-          <td><input type="button" value="삭제" onclick="location.href='userTicketingPro.jsp?r_no=<%= Ticketing[0]%>'">
+          
+          <td><%= rs.getString("t_address")%></td>
+          <td><%= rs.getString("m_name")%></td>
+          <td><%= rs.getString("r_count")%></td>
+          <td><%= rs.getString("r_date")%></td>
+          <td><%= rs.getString("r_no")%></td>
+        
+      
+          <td><input type="submit" value="예매취소">
+              
         </tr>
       <%} %>
       <tr>
@@ -117,7 +115,6 @@ if(strReferer == null){
       </tr>
     </table>
     </div>
-    </form>
     <%}else {%>
       <h2>예매내역이 없습니다.</h2>
       <button type="button" onclick="location.href='ticketList.jsp'">예매하러가기</button>
